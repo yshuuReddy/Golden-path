@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hello</title>
-  </head>
-  <body>
-    <h1>Hello, World!</h1>
-  </body>
+<head>
+  <title>Golden Path Catalog</title>
+</head>
+<body>
+  <h1>Golden Path Catalog</h1>
+  <div id="catalog"></div>
+
+  <script>
+    fetch('catalog.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('catalog');
+        data.forEach(item => {
+          const card = document.createElement('div');
+          card.style.border = '1px solid #ccc';
+          card.style.margin = '10px';
+          card.style.padding = '10px';
+          card.innerHTML = `
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <strong>Cloud:</strong> ${item.cloud}
+          `;
+          container.appendChild(card);
+        });
+      });
+  </script>
+</body>
 </html>
+
