@@ -1,0 +1,20 @@
+[
+  {
+    "name": "AKS Cluster",
+    "description": "Deploy Azure Kubernetes Service",
+    "cloud": "Azure",
+    "module": "aks-module"
+  },
+  {
+    "name": "Java App",
+    "description": "Deploy a Spring Boot app",
+    "cloud": "Multi-Cloud",
+    "module": "java-app-module"
+  },
+  {
+    "name": "GKE Cluster",
+    "description": "Deploy Google Kubernetes Engine",
+    "cloud": "GCP",
+    "module": "gke-module"
+  }
+]
