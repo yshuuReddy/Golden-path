@@ -2,30 +2,59 @@
 <html>
 <head>
   <title>Golden Path Catalog</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px auto;
+      max-width: 400px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .cloud {
+      font-size: 12px;
+      color: #555;
+      background: #e0e0e0;
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Golden Path Catalog</h1>
-  <div id="catalog"></div>
+  <h1>🌟 Golden Path</h1>
+  <div id="catalog">Loading...</div>
 
   <script>
     fetch('catalog.json')
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
         const container = document.getElementById('catalog');
+        container.innerHTML = '';
         data.forEach(item => {
-          const card = document.createElement('div');
-          card.style.border = '1px solid #ccc';
-          card.style.margin = '10px';
-          card.style.padding = '10px';
-          card.innerHTML = `
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            <strong>Cloud:</strong> ${item.cloud}
+          container.innerHTML += `
+            <div class="card">
+              <h3>${item.name}</h3>
+              <p>${item.description}</p>
+              <div class="cloud">${item.cloud}</div>
+            </div>
           `;
-          container.appendChild(card);
         });
       });
   </script>
 </body>
 </html>
-
